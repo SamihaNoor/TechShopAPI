@@ -38,7 +38,7 @@ namespace TechShopCFAPI.Controllers.Admin
         [Route("{id}"), BasicAuthentication]
         public IHttpActionResult Get(int id)
         {
-            Customer cust = custRepo.Get(id);
+            Models.Customer cust = custRepo.Get(id);
             if (cust == null)
             {
                 return StatusCode(HttpStatusCode.NoContent);

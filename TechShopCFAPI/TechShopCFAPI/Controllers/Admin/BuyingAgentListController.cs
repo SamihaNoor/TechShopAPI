@@ -38,7 +38,7 @@ namespace TechShopCFAPI.Controllers.Admin
         [Route("{id}"), BasicAuthentication]
         public IHttpActionResult Get(int id)
         {
-            BuyingAgent by = byRepo.Get(id);
+            Models.BuyingAgent by = byRepo.Get(id);
             if (by == null)
             {
                 return StatusCode(HttpStatusCode.NoContent);
@@ -51,7 +51,7 @@ namespace TechShopCFAPI.Controllers.Admin
 
 
         [Route(""), BasicAuthentication]
-        public IHttpActionResult Post(BuyingAgent by)
+        public IHttpActionResult Post(Models.BuyingAgent by)
         {
             by.ProfilePic = "default.jpg";
             by.Status = 1;
@@ -71,7 +71,7 @@ namespace TechShopCFAPI.Controllers.Admin
         }
 
         [Route("{id}"), BasicAuthentication]
-        public IHttpActionResult PutBuyingAgent([FromBody]BuyingAgent by, [FromUri]int id)
+        public IHttpActionResult PutBuyingAgent([FromBody]Models.BuyingAgent by, [FromUri]int id)
         {
             by.Id = id;
             by.LastUpdated = DateTime.Now;

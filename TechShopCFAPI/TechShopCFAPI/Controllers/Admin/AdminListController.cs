@@ -80,6 +80,7 @@ namespace TechShopCFAPI.Controllers.Admin
             cred.Status = 1;
             cred.Type = 1;
             CredentialRepository.Insert(cred);
+            
 
             return Created("api/admins/" + admin.Id, admin);
         }
@@ -87,9 +88,11 @@ namespace TechShopCFAPI.Controllers.Admin
         [Route("{id}"), BasicAuthentication]
         public IHttpActionResult PutAdmin([FromBody]Models.Admin admin, [FromUri]int id)
         {
+
             admin.Id = id;
             admin.LastUpdated = DateTime.Now;
             adminRepository.Update(admin);
+            
             return Ok();
         }
 

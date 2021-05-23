@@ -54,7 +54,7 @@ namespace TechShopCFAPI.Repositories.AdminModule
 
         public List<Sales_Log> History(int id)
         {
-            return context.Sales_Log.Where(m => m.UserId == id).ToList();
+            return context.Sales_Logs.Where(m => m.UserId == id).ToList();
         }
 
         public List<Review> CustomerReview(int id)

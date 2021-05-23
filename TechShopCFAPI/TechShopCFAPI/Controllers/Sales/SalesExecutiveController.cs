@@ -21,14 +21,14 @@ namespace TechShopCFAPI.Controllers
         CartDataModel cartData = new CartDataModel();
         //System.Web.HttpCookie sc = new HttpCookie("sc1");
 
-        [Route("Profile", Name = "SalesExecutiveProfile"),BasicAuthintcationAttribute]
+        [Route("Profile", Name = "SalesExecutiveProfile"), BasicAuthentication]
         public IHttpActionResult Get()
         {
           // SalesExecutiveDataModel d = new SalesExecutiveDataModel();
            // var dd = d.GetValidSalesExecutive(1);
             return Ok(context.SalesExecutives);
         }
-        [Route("Products", Name = "SalesExecutiveProducts"), BasicAuthintcationAttribute]
+        [Route("Products", Name = "SalesExecutiveProducts"), BasicAuthentication]
         public IHttpActionResult GetProducts()
         {
             var FullUrl = HttpContext.Current.Request.Url.AbsoluteUri;
@@ -82,7 +82,7 @@ namespace TechShopCFAPI.Controllers
             
         }
 
-        [Route("Cart", Name = "cartview"), BasicAuthintcationAttribute]
+        [Route("Cart", Name = "cartview"), BasicAuthentication]
         public IHttpActionResult GetCart()
         {
             return Ok(context.Carts);
@@ -140,7 +140,7 @@ namespace TechShopCFAPI.Controllers
             }
             return Ok();
         }
-        [Route("LoadChart", Name = "LoadChart"), BasicAuthintcationAttribute]
+        [Route("LoadChart", Name = "LoadChart"), BasicAuthentication]
         public IHttpActionResult GetChart()
         {
             SalesLogDataModel log = new SalesLogDataModel();

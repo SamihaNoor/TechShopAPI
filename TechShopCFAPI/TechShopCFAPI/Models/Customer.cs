@@ -1,3 +1,4 @@
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,7 +16,6 @@ namespace TechShopCFAPI.Models
         public int CustomerId { get; set; }
         [Required, MaxLength(30), MinLength(3)]
         public string FullName { get; set; }
-
         [Required, MaxLength(20), MinLength(3), Index(IsUnique = true)]
         public string UserName { get; set; }
         [Required, MaxLength(20), MinLength(3)]
@@ -45,11 +45,5 @@ namespace TechShopCFAPI.Models
         public virtual ICollection<ShippingData> ShippingDatas { get; set; }
         [JsonIgnore, XmlIgnore]
         public virtual ICollection<WishList> WishLists { get; set; }
-
-        [JsonIgnore, XmlIgnore]
-        public virtual ICollection<OldProduct> OldProduct { get; set; }
-        [JsonIgnore, XmlIgnore]
-        public virtual ICollection<Sales_Log> Sales_Logs { get; set; }
-
     }
 }

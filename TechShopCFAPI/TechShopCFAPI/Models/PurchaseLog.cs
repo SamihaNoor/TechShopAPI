@@ -1,5 +1,4 @@
-using System;
-
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -59,6 +58,5 @@ namespace TechShopCFAPI.Models
         public Nullable<System.DateTime> StartDate { get; set; }
         [NotMapped]
         public Nullable<System.DateTime> EndDate { get; set; }
-
     }
 }

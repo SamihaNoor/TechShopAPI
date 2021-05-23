@@ -15,7 +15,7 @@ namespace TechShopCFAPI.Controllers.Admin
         {
             TechShopDbContext context = new TechShopDbContext();
 
-            var query = context.Sales_Log.Include("Product")
+            var query = context.Sales_Logs.Include("Product")
                    .GroupBy(p => p.Product.Category)
                    .Select(g => new { name = g.Key, count = g.Sum(w => w.Quantity) }).OrderByDescending(x => x.count).ToList().Take(7);
             return Ok(query);
@@ -26,7 +26,7 @@ namespace TechShopCFAPI.Controllers.Admin
         {
             TechShopDbContext context = new TechShopDbContext();
 
-            var query = context.Sales_Log.Include("Product")
+            var query = context.Sales_Logs.Include("Product")
                    .GroupBy(p => p.Product.Brand)
                    .Select(g => new { name = g.Key, count = g.Sum(w => w.Quantity) }).OrderByDescending(x => x.count).ToList().Take(7);
             return Ok(query);

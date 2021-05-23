@@ -9,15 +9,16 @@ using System.Threading;
 using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
-
-using TechShopCFAPI.Repository;
+using TechShopCFAPI.Models;
+using TechShopCFAPI.Repositories.AdminModule;
 
 namespace TechShopCFAPI.Attributes
 {
-    public class BasicAuthenticationAttribute : AuthorizationFilterAttribute
+    public class BasicAuthenticationAttribute:AuthorizationFilterAttribute
     {
         public override void OnAuthorization(HttpActionContext actionContext)
         {
+            base.OnAuthorization(actionContext);
             if (actionContext.Request.Headers.Authorization == null)
             {
                 actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
@@ -29,7 +30,6 @@ namespace TechShopCFAPI.Attributes
                 string[] splittedText = decoded.Split(new char[] { ':' });
                 string email = splittedText[0];
                 string password = splittedText[1];
-                
                 CredentialRepository credRepo = new CredentialRepository();
                 Credential cred = new Credential();
                 cred = credRepo.Validation(email, password);

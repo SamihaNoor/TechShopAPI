@@ -15,7 +15,7 @@ namespace TechShopCFAPI.Controllers.Admin
         [Route("api/sales_log/getdataprofitscategory")]
         public IHttpActionResult GetDataCategory()
         {
-            var query = context.Sales_Log.Include("Product")
+            var query = context.Sales_Logs.Include("Product")
                    .GroupBy(p => p.Product.Category)
                    .Select(g => new { name = g.Key, count = g.Sum(w => w.Profits) }).ToList();
             return Json(query);
@@ -24,7 +24,7 @@ namespace TechShopCFAPI.Controllers.Admin
         [Route("api/sales_log/getdataprofitsproductname")]
         public IHttpActionResult GetDataProductName()
         {
-            var query = context.Sales_Log.Include("Product")
+            var query = context.Sales_Logs.Include("Product")
                    .GroupBy(p => p.Product.ProductName)
                    .Select(g => new { name = g.Key, count = g.Sum(w => w.Profits) }).ToList();
             return Json(query);
