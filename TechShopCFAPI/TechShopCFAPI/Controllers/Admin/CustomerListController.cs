@@ -11,31 +11,30 @@ using TechShopCFAPI.Repositories.AdminModule;
 
 namespace TechShopCFAPI.Controllers.Admin
 {
-    [RoutePrefix("api/customers"), BasicAuthentication]
     public class CustomerListController : ApiController
     {
         CustomerRepository custRepo = new CustomerRepository();
         CredentialRepository credentialRepository = new CredentialRepository();
 
-        [Route("active"), BasicAuthentication]
+        [Route("api/customers/active"), BasicAuthentication]
         public IHttpActionResult Get()
         {
             return Ok(custRepo.GetActiveCustomers());
         }
 
-        [Route("active/name"), BasicAuthentication]
+        [Route("api/customers/active/name"), BasicAuthentication]
         public IHttpActionResult GetActiveByName(string name)
         {
             return Ok(custRepo.GetActiveByName(name));
         }
 
-        [Route("restricted/name"), BasicAuthentication]
+        [Route("api/customers/restricted/name"), BasicAuthentication]
         public IHttpActionResult GetRestrictedByName(string name)
         {
             return Ok(custRepo.GetRestrictedByName(name));
         }
 
-        [Route("{id}"), BasicAuthentication]
+        [Route("api/customers/{id}"), BasicAuthentication]
         public IHttpActionResult Get(int id)
         {
             Models.Customer cust = custRepo.Get(id);
@@ -46,7 +45,7 @@ namespace TechShopCFAPI.Controllers.Admin
             return Ok(cust);
         }
 
-        [Route("Block/{id}"), BasicAuthentication]
+        [Route("api/customers/Block/{id}"), BasicAuthentication]
         public IHttpActionResult PutBlockCustomer(int customerId)
         {
             var cust = custRepo.Get(customerId);
@@ -57,20 +56,20 @@ namespace TechShopCFAPI.Controllers.Admin
 
         }
 
-        [Route("restricted"), BasicAuthentication]
+        [Route("api/customers/restricted"), BasicAuthentication]
         public IHttpActionResult GetRestricted()
         {
             return Ok(custRepo.GetRestrictedCustomers());
         }
 
-        [Route("history/{id}"), BasicAuthentication]
+        [Route("api/customers/history/{id}"), BasicAuthentication]
         public IHttpActionResult GetHistory(int id)
         {
             return Ok(custRepo.History(id));
         }
 
 
-        [Route("ReactiveCustomer/{id}"), BasicAuthentication]
+        [Route("api/customers/ReactiveCustomer/{id}"), BasicAuthentication]
         public IHttpActionResult PutReactivateCustomer(int customerId)
         {
             var cust = custRepo.GetCust(customerId);
@@ -79,7 +78,7 @@ namespace TechShopCFAPI.Controllers.Admin
             return Ok();
         }
 
-        [Route("Review/{id}"), BasicAuthentication]
+        [Route("api/customers/Review/{id}"), BasicAuthentication]
         public IHttpActionResult GetReview(int id)
         {
             return Ok(custRepo.CustomerReview(id));
